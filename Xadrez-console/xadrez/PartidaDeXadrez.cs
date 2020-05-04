@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using tabuleiro;
+
 
 namespace xadrez
 {
     class PartidaDeXadrez
     {
-        public Tabuleiro tab { get;private set; }
-        public int turno { get; set; }
-        private Cor jogadorAtual { get; set; }
-        public bool terminada { get; set; }
+
+        public Tabuleiro tab { get; private set; }
+        private int turno;
+        private Cor jogadorAtual;
+        public bool terminada { get; private set; }
 
         public PartidaDeXadrez()
         {
@@ -21,7 +21,7 @@ namespace xadrez
             colocarPecas();
         }
 
-        public void ExecutaMovimento(Posicao origem, Posicao destino)
+        public void executaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.retirarPeca(origem);
             p.incrementarQteMovimentos();
@@ -44,9 +44,6 @@ namespace xadrez
             tab.colocarPeca(new Torre(tab, Cor.Preta), new PosicaoXadrez('e', 7).toPosicao());
             tab.colocarPeca(new Torre(tab, Cor.Preta), new PosicaoXadrez('e', 8).toPosicao());
             tab.colocarPeca(new Rei(tab, Cor.Preta), new PosicaoXadrez('d', 8).toPosicao());
-
-
         }
-
     }
 }

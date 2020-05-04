@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace tabuleiro
+﻿namespace tabuleiro
 {
     class Tabuleiro
     {
@@ -28,7 +24,8 @@ namespace tabuleiro
             return pecas[pos.linha, pos.coluna];
         }
 
-        public bool existePeca(Posicao pos) {
+        public bool existePeca(Posicao pos)
+        {
             validarPosicao(pos);
             return peca(pos) != null;
         }
@@ -37,15 +34,15 @@ namespace tabuleiro
         {
             if (existePeca(pos))
             {
-                throw new TabuleiroException("Ja existe uma peca nessa posicao");
+                throw new TabuleiroException("Já existe uma peça nessa posição!");
             }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
 
-        public Peca retirarPeca(Posicao pos) {
-        
-            if(peca(pos) == null)
+        public Peca retirarPeca(Posicao pos)
+        {
+            if (peca(pos) == null)
             {
                 return null;
             }
@@ -53,13 +50,11 @@ namespace tabuleiro
             aux.posicao = null;
             pecas[pos.linha, pos.coluna] = null;
             return aux;
-
-
         }
 
         public bool posicaoValida(Posicao pos)
         {
-            if(pos.linha < 0 || pos.linha >= linhas || pos.coluna <0 || pos.coluna >= colunas)
+            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
             {
                 return false;
             }
@@ -70,7 +65,7 @@ namespace tabuleiro
         {
             if (!posicaoValida(pos))
             {
-                throw new TabuleiroException("Posicao Invalida!");
+                throw new TabuleiroException("Posição inválida!");
             }
         }
     }
